@@ -1,0 +1,25 @@
+<%= form_with model: @dev, local: true do |form| %>
+  <% if @dev != nil %>
+    <% if @dev.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+              <%= pluralize(@bug.errors.count, "error(s)") %> prohibited this dev from being added:
+          </h2>
+          <ul>
+            <% @dev.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  
+   <p>
+    <%= form.label :devname %><br>
+    <%= form.text_field :devname %>
+   </p>
+   <p>
+   <%= form.submit %>
+   </p>
+
+ <% end %>

@@ -1,0 +1,27 @@
+<style>
+table td {
+  border: 1px solid black;
+}
+</style>
+
+<h1>Developer list</h1>
+
+  <table>
+        <tr>
+          <th>Dev</th>
+          <th colspan="1"></th>
+        </tr>
+
+        <% @devs.each do |dev| %>
+          <tr>
+            <td><%= dev.devname%></td>
+            <td><%= link_to 'Details', dev_path(dev) %></td>
+            <td><%= link_to 'Destroy', dev_path(dev),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+  </table>
+
+ <%= link_to 'Add a Developer', new_dev_path %><br>
+ <%= link_to 'Homepage', root_path %>

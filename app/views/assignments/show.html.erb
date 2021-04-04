@@ -1,0 +1,15 @@
+
+<p>
+  <strong>Developer:</strong>
+  <%= link_to @assignment.dev.devname, dev_path(@assignment.dev) %>
+</p>
+
+<p>
+  <strong>Bug:</strong>
+  <%= link_to @assignment.bug.title, bug_path(@assignment.bug) %>
+</p>
+
+<%= link_to 'Unassign', assignment_path(@assignment),
+  method: :delete,
+  data: {confirm: 'Are you sure?'} %><br>
+<%= link_to 'Back', 'javascript:history.back()' %>

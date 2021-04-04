@@ -1,0 +1,30 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+
+<h1>Bug list</h1>
+
+  <table>
+    <tr>
+      <th>Bug</th>
+      <th>Description</th>
+      <th colspan="2"></th>
+    </tr>
+
+    <% @bugs.each do |bug| %>
+      <tr>
+        <td><%= bug.title %></td>
+        <td><%= bug.text %></td>
+        <td><%= link_to 'Details', bug_path(bug) %></td>
+        <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
+        <td><%= link_to 'Destroy', bug_path(bug),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= link_to 'Report a bug', new_bug_path %><br>
+  <%= link_to 'Homepage', root_path %>

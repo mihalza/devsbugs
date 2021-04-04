@@ -1,0 +1,32 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+<p>
+  <strong>Dev:</strong>
+    <%= @dev.devname %>
+</p>
+<p>
+  <strong>This developer is working on:<strong><br>
+      <table>
+        <tr>
+          <th>Bug</th>
+          <th>Description</th>
+          <th colspan="2"></th>
+        </tr>
+        <tr>
+          <% @assignments = Assignment.where(dev: @dev) %>
+          <% @assignments.each do |assignment| %>
+            <%if assignment.bug %>
+             <td><%= assignment.bug.title %></td>
+             <td><%= assignment.bug.text %></td>
+             <td><%= link_to 'View Bug', bug_path(assignment.bug) %></td>
+             <td><%= link_to 'Unassign', assignment_path(assignment),
+               method: :delete,
+               data: {confirm: 'Are you sure?' } %></td>
+           <% end %>
+          </tr>
+        <% end %>
+      </table>
+<%= link_to 'Back', 'javascript:history.back()' %>
